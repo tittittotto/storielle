@@ -32,7 +32,7 @@
 			#blocco_theend:after{letter-spacing:10px;content:"!!!";}
 		#endwhite_block {background-color:#FFF;background:linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 100%);height:48em;}
 	/* STORY BLOCKS */
-		#blocco_own {position:relative;z-index:2;height:4650px;background-image:url("https://www.googledrive.com/host/0B2LigMuKRlHBY1Y3eHdkYVdWanc");background-size:215px 210px;background-repeat:no-repeat;background-position:90% 0px;}
+		#blocco_own {position:relative;z-index:2;height:4650px;background-image:url("images/cartoon_own.png");background-size:215px 210px;background-repeat:no-repeat;background-position:90% 0px;}
 		#blocco_01 {position:relative;top:-3860px;height:28em;}
 		#blocco_04 {position:relative;top:-3850px;height:30em;}
 		#blocco_05 {position:relative;top:-3830px;height:32.5em;}
@@ -106,6 +106,7 @@
 		//var heightWindow = window.innerHeight*2;
 		//console.log("Height is "+heightWindow);
 		//$("#miobody").css("height",heightWindow);
+		alert(screen.width + " x " + screen.height);
 		isMobile = screen.width < 780 ? true : false;
 		if(isMobile)
 			$(window).scroll(function() {console.log("THIS:\n"+$(this).scrollTop()+"-PAGE_OFFSET:"+window.pageYOffset);scrollStory();});
