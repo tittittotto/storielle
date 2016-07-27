@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="icon" type="image/png" href="images/cartoon_owl.png" sizes="16x16">
+	<title>The Corious Owl</title>
+	
+	<style>
+	/* COMMON ID and CLASSES STYLE */
+		[id^="blocco_"] {font-size:30px;font-family:"Century Gothic",CenturyGothic,AppleGothic,sans-serif;font-weight:bold;padding-left:2%;text-align:left}
+			[id^="blocco_"] > span {display:inline-block;}
+		.no_border {margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;}
+		#blocco_title,#blocco_theend {font-size:50px;position:relative;z-index:1;letter-spacing:40px;text-align:center;text-transform:uppercase;text-shadow:1px 3px 5px #E02AB1;}
+		#body_background {z-index:-1;position:fixed;background-color:#FFF;width:100%;heigth:100%;background-image:url("images/cartoon_body_backgrond.png");background:url("images/cartoon_body_backgrond.png"),linear-gradient(#FFF 0%,#FFF 25%,#BDD 50%,#FFF 75%,#FFF 100%);}
+		#body_panel {width:80%;margin-left:10%;}
+	/* SECTIONS STYLE */
+		#section_story {z-index:-2;width:100%;background-color:pink;
+			/*
+			,linear-gradient(#FFC0CB 50%,#FF55AB 100%);
+			*/
+			height:5500px;
+		}
+	/* HEADER BLOCK */
+		#beginwhite_block {height:22em;background:linear-gradient(rgba(255,255,255,0) 0%, #FFF 30%, pink 100%);}
+		#blocco_title {background-color:#FFC0CB;}
+		#blocco_subtitle{background-color:#FFC0CB;font-size:20px;text-align:center;height:784px;padding-top:3em;color:#333;}
+		#blocco_subtitle:after{content:"(scrorri la pagina per vedere la storia)"}
+	/* FOOTER BLOCK */
+		#blocco_theend {background:linear-gradient(#FFC0CB, #FF77CB 30%, #FF77CB 80%, #FFF 100%);margin-top:0px;padding-top:180px;height:4.4em;/* margin-top:-580px; */}
+			#blocco_theend:before{content:"the end";}
+			#blocco_theend:after{letter-spacing:10px;content:"!!!";}
+		#endwhite_block {background-color:#FFF;background:linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 100%);height:48em;}
+	/* STORY BLOCKS */
+		#blocco_own {position:relative;z-index:2;height:4650px;background-image:url("https://www.googledrive.com/host/0B2LigMuKRlHBY1Y3eHdkYVdWanc");background-size:215px 210px;background-repeat:no-repeat;background-position:90% 0px;}
+		#blocco_01 {position:relative;top:-3860px;height:28em;}
+		#blocco_04 {position:relative;top:-3850px;height:30em;}
+		#blocco_05 {position:relative;top:-3830px;height:32.5em;}
+			#blocco_05 > span {z-index:2;}
+		#blocco_02 {position:relative;top:-3890px;height:28em;}
+		#blocco_tree {position:relative;top:-3940px;height:22em;background-color:#90EE90;vertical-align:bottom;background:url("images/cartoon_tree.png"), linear-gradient(#FFC0CB,#90EE90 10%,#90EE90 90%,#FFC0CB 100%);background-repeat:no-repeat;background-position:102% 105%;}
+			#blocco_tree > span {padding-top:2em;}
+		/** IMAGES **/
+		#blocco_hat {z-index:3;position:relative;height:25em;top:-4.95em;background-image:url("images/cartoon_hat.png");background-repeat:no-repeat;background-position:85.5% 0%;}
+		#blocco_wand {position:relative;height:25em;top:-29.95em;background-image:url("images/cartoon_wand.png");background-repeat:no-repeat;background-position:98% 00%;background-size:100px 106px;}
+		#blocco_mail {position:relative;height:25em;top:-7em;background-image:url("images/cartoon_mail.png");background-repeat:no-repeat;background-position:85.7% 630px;}
+		#blocco_bag_front {z-index:3;position:relative;height:45em;top:-49.9em;background-image:url("images/cartoon_bag_front.png");background-repeat:no-repeat;background-position:85.7% 0%;}
+		#blocco_bag_back {padding-left:0%;position:relative;width:100%;height:45em;top:-94.9em;background-image:url("images/cartoon_bag_back.png");background-repeat:no-repeat;background-position:85.7% 0%;}
+		#blocco_mailcap {z-index:3;position:relative;width:100%;height:25em;top:-130em;right:2%;background-image:url("images/cartoon_mailcap.png");background-repeat:no-repeat;background-position:87% 0%;}
+		#blocco_predator {z-index:3;position:relative;left:-2%;width:100%;height:10em;background-color:rgba(255, 192, 203, 0.97);background-image:url("images/cartoon_cougar.png");
+			background-repeat:no-repeat;background-size:40% 80%;background-position:30% 50%;}
+/* MOBILE */
+	@media only screen and (max-device-width:780px) {
+		[id^="blocco_"] > span {max-width:510px;word-wrap:break-word;}
+		
+		/** IMAGES **/
+		#blocco_own {background-position:85% 0px;}
+		#blocco_tree {background-position:125% 105%;}
+		#blocco_predator{background-position:12% 50%;background-size:50% 50%;}
+		#blocco_hat{background-position:78.4% 0%;}
+		#blocco_mail{background-position:85.7% 600px;}
+		#blocco_bag_front, #blocco_bag_back{background-position:75% 0;}
+	}
+	</style>
+</head>
+<body>
+<div id="body_background" class="no_border">
+</div>
+<section id="body_panel" class="no_border">
+	<section id="section_header" class="no_border">
+		<div id="beginwhite_block"></div>
+		<div id="blocco_title">il gufo curiosone</div>
+		<div id="blocco_subtitle"></div>
+	</section>
+	<section id="section_story" class="no_border">
+		<div id="blocco_own"><span>Ciao, sono un gufo curiosone</span></div>
+		<div id="blocco_01"><span>Ma sono anche un gran finofe,<br>e se vedo un predatore mi nascondo</span>
+			<div id="blocco_predator"></div>
+		</div>
+		<div id="blocco_04"><span>Il mio sogno &egrave;...<br><br><br>diventare uno stregone!</span>
+			<div id="blocco_hat"></div>
+			<div id="blocco_wand"></div>
+		</div>
+		<div id="blocco_05"><span>Ma mi limito a consegnare la posta<br>a maghi e babbani...<br><br>sigh!!!</span>
+			<div id="blocco_mail"></div>
+			<div id="blocco_bag_front"></div>
+			<div id="blocco_bag_back"></div>
+			<div id="blocco_mailcap"></div>
+		</div>
+		<div id="blocco_02"><span>Mi piace volare,<br>ma mi stanco facilmente...</span></div>
+		<div id="blocco_tree"><span>E quando vedo un albero<br>mi fermo a riposare</span></div>
+	</section>
+	<section id="section_footer" class="no_border">
+		<div id="blocco_theend"></div>
+		<div id="endwhite_block"></div>
+	</section>
+</section>
+<!-- JS JAVASCRIPT -->
+<script type="text/javascript">
+	var stopHeight = 5293;
+	var offsetBackground = 0;
+	var startHeight = 883;
+	var isMobile = false;
+	$(document).ready(function(){
+		$("#body_background").css("height",window.innerHeight);
+		//var heightWindow = window.innerHeight*2;
+		//console.log("Height is "+heightWindow);
+		//$("#miobody").css("height",heightWindow);
+		isMobile = screen.width < 780 ? true : false;
+		if(isMobile)
+			$(window).scroll(function() {console.log("THIS:\n"+$(this).scrollTop()+"-PAGE_OFFSET:"+window.pageYOffset);scrollStory();});
+		else 
+			window.onscroll = function() {scrollStory()};
+	});
+		//window.onscroll = function() {
+	function scrollStory() {
+			var heightOffset = window.pageYOffset;
+			
+			//console.log("heightOffset:"+heightOffset+";startHeight:"+startHeight+";stopHeight:"+stopHeight);
+			//RESET OTHER IMAGES:
+			//$("#blocco_hat").css("backgroundPositionY",0);
+	// !!!! OWN FLY !!!!
+			var currentVal = heightOffset+offsetBackground-startHeight;
+			if(heightOffset >= startHeight && heightOffset < stopHeight) {
+				$("#blocco_own").css("backgroundPositionY",(heightOffset+offsetBackground-startHeight));
+				console.log("Adesso vale:");
+				console.log($("#blocco_own").css("backgroundPositionY"));
+				//WIZARD: HAT AND WAND
+				var startHatY = 1742;
+				var endHatY = 2250;
+				var startHatX = 1354;
+				var endHatX = 2550;
+				//var hatX = isMobile ? 78.4 : 85.5;
+				var hatX = isMobile ? 78.4 : 85.5;
+				var wandOffset = 100;
+				if(currentVal >= startHatY && currentVal < endHatY) {
+					$("#blocco_hat").css("backgroundPositionY",(currentVal-startHatY)).css("backgroundPositionX",hatX+"%");
+					$("#blocco_wand").css("backgroundPositionY",(currentVal-startHatY+wandOffset));
+					//WAND
+					if(currentVal >= startHatY+100 && currentVal < (endHatY-100)) {
+						$("#blocco_wand").css("backgroundSize","100px 106px");
+					} else if(currentVal < startHatY+100) {
+						$("#blocco_wand").css("backgroundSize",(100*(currentVal-startHatY)/(100))+"px "+(100*(currentVal-startHatY)/(106))+"px");
+					} else if(currentVal > endHatY-100) {
+						$("#blocco_wand").css("backgroundSize",(100-100*(currentVal-endHatY+100)/(100))+"px "+(106-100*(currentVal-endHatY+100)/(106))+"px");
+					}
+				} else if(currentVal > endHatY) {
+					$("#blocco_wand").css("backgroundSize","0% 0%");
+					$("#blocco_hat").css("backgroundPositionY",(endHatY-startHatY));
+					if(currentVal > endHatX) {
+						$("#blocco_hat").css("backgroundPositionX","120%");
+					} else {
+						$("#blocco_hat").css("backgroundPositionX",(hatX-(hatX-120)*(currentVal-endHatY)/(endHatX-endHatY))+"%");
+					}
+				} else if(currentVal < startHatY) {
+					$("#blocco_wand").css("backgroundSize","0% 0%");
+					$("#blocco_hat").css("backgroundPositionY",0);
+					if(currentVal < startHatX) {
+						$("#blocco_hat").css("backgroundPositionX","120%");
+					} else {
+//						console.log("***:"+currentVal);
+						$("#blocco_hat").css("backgroundPositionX",(120-(120-hatX)*(currentVal-startHatX)/(startHatY-startHatX))+"%");
+					}
+				}
+				//MAILMAN: MAIL AND BAG AND CAP
+				var startMailY = 2540;
+				var endMailY = 2880;
+				var startMailX = 2440;
+				var endMailX = 2980;
+				var mailX = isMobile ? 78.6 : 85.7;	// %
+				var mailY = isMobile ? 540 : 580;	//px
+				var bagY = isMobile ? 875 : 925;	//px
+				var mailCapX = isMobile ? 80.9 : 87;	// %
+				var mailCapY = isMobile ? 510 : 550;	//px
+				if(currentVal >= startMailY && currentVal < endMailY) {
+					$("#blocco_mail").css("backgroundPositionY",(currentVal-endMailY+mailY)).css("backgroundPositionX",mailX+"%");
+					$("#blocco_bag_front").css("backgroundPositionY",(currentVal-endMailY+bagY));
+					$("#blocco_bag_back").css("backgroundPositionY",(currentVal-endMailY+bagY));
+					$("#blocco_mailcap").css("backgroundPositionY",(currentVal-endMailY+mailCapY)).css("backgroundPositionX",mailCapX+"%");
+					
+//					if(!isBagFinal($("#blocco_bag_front").css("backgroundImage"))) {
+//						$("#blocco_bag_front").css("backgroundImage", "url('images/cartoon_bag_final_front.png')");
+//						$("#blocco_bag_back").css("backgroundImage", "url('images/cartoon_bag_final_back.png')");
+//					}
+				} else if(currentVal > endMailY) {
+					$("#blocco_mail").css("backgroundPositionY",(mailY));
+					$("#blocco_mailcap").css("backgroundPositionY",(mailCapY));
+//					if(isBagFinal($("#blocco_bag_front").css("backgroundImage"))) {
+//						$("#blocco_bag_front").css("backgroundImage", "url('images/cartoon_bag_front.png')");
+//						$("#blocco_bag_back").css("backgroundImage", "url('images/cartoon_bag_back.png')");
+//					}
+					if(currentVal > endMailX) {
+						$("#blocco_mail").css("backgroundPositionX","120%");
+						$("#blocco_bag_front").css("backgroundPositionY",-270);
+						$("#blocco_bag_back").css("backgroundPositionY",-270);
+						$("#blocco_mailcap").css("backgroundPositionX","-25.1%");
+						
+					} else {
+						//console.log("%:"+(mailCapX-(currentVal-endMailY)/(endMailX-endMailY)*105.1)+" | "+((currentVal-endMailY)/(endMailX-endMailY)*105.1));
+						$("#blocco_mail").css("backgroundPositionX",(mailX-(mailX-120)*(currentVal-endMailY)/(endMailX-endMailY))+"%");
+						$("#blocco_bag_front").css("backgroundPositionY",(bagY-585*(currentVal-endMailY)/(endMailX-endMailY)));
+						$("#blocco_bag_back").css("backgroundPositionY",(bagY-585*(currentVal-endMailY)/(endMailX-endMailY)));
+						$("#blocco_mailcap").css("backgroundPositionX",(mailCapX-125.1*(currentVal-endMailY)/(endMailX-endMailY))+"%");
+					}
+				} else if(currentVal < startMailY) {
+					$("#blocco_mail").css("backgroundPositionY",startMailY-endMailY+mailY);
+					$("#blocco_mailcap").css("backgroundPositionY",startMailY-endMailY+mailCapY);
+//					if(isBagFinal($("#blocco_bag_front").css("backgroundImage"))) {
+//						$("#blocco_bag_front").css("backgroundImage", "url('images/cartoon_bag_front.png')");
+//						$("#blocco_bag_back").css("backgroundImage", "url('images/cartoon_bag_back.png')");
+//					}
+					if(currentVal < startMailX) {
+						$("#blocco_mail").css("backgroundPositionX","120%");
+						$("#blocco_bag_front").css("backgroundPositionY",-270);
+						$("#blocco_bag_back").css("backgroundPositionY",-270);
+						$("#blocco_mailcap").css("backgroundPositionX","124.5%");
+					} else {
+						$("#blocco_mail").css("backgroundPositionX",(120-(120-mailX)*(currentVal-startMailX)/(startMailY-startMailX))+"%");
+						console.log("["+((currentVal-startMailX)/(startMailY-startMailX)*100)+"%]"+(-270+bagY*(currentVal-startMailX)/(startMailY-startMailX))+"|Y MAX:"+(startMailY-endMailY+bagY)+"-CUR"+(currentVal-endMailY+bagY));
+						//$("#blocco_bag_front").css("backgroundPositionY",(-290+bagY*(currentVal-startMailX)/(startMailY-startMailX)));
+						$("#blocco_bag_front").css("backgroundPositionY",(-270+(-70+bagY)*(currentVal-startMailX)/(startMailY-startMailX)));
+						$("#blocco_bag_back").css("backgroundPositionY",(-270+(-70+bagY)*(currentVal-startMailX)/(startMailY-startMailX)));
+						$("#blocco_mailcap").css("backgroundPositionX",(124.5-(124.5-mailCapX)*(currentVal-startMailX)/(startMailY-startMailX))+"%");
+					}
+				}
+			} 
+	// !!!! START FLY	
+			else if(startHeight > heightOffset) {
+				$("#blocco_own").css("backgroundPositionY",0);
+			}
+	// !!!! END FLY
+			else if(heightOffset >= startHeight && parseInt($("#blocco_own").css("backgroundPositionY")) < currentVal) {
+				$("#blocco_own").css("backgroundPositionY",stopHeight-startHeight);
+				//console.log("now is "+currentVal);
+				//console.log("settato a "+$("#blocco_own").css("backgroundPositionY"));
+			
+			} 
+	}
+	
+	$("body").keydown(function(e) {
+		//alert(e.which);
+		if(e.which == 65) {
+			window.scroll(0,window.pageYOffset+4);
+		}
+	});
+	
+	function isBagFinal(temp) {
+		temp = temp.substr(temp.lastIndexOf("/")+1,temp.length-temp.lastIndexOf("/")-3);
+	//	console.log("temp is "+temp);
+		return (temp == "cartoon_bag_final_front.png");
+	}
+	
+</script>
+</body>
+</html>
