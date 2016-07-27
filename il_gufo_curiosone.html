@@ -110,7 +110,7 @@
 		alert(screen.width+" x "+screen.height+"|"+window.devicePixelRatio);
 		isMobile = screen.width < 780 ? true : false;
 		var currentVal = parseInt(window.pageYOffset)+offsetBackground-startHeight;
-		alert(window.pageYOffset+window.innerHeight+"|"+$("body").css("height"));
+		//alert(window.pageYOffset+window.innerHeight+"|"+$("body").css("height"));
 		if(isMobile)
 			$(window).scroll(function() {console.log("THIS:\n"+$(this).scrollTop()+"-PAGE_OFFSET:"+window.pageYOffset);scrollStory();});
 		else 
