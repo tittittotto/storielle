@@ -249,17 +249,16 @@
 		}
 	});
 	var stopOver = true;
-	var intIN = 0;
-	$("body").on("mouseover",function(e) {
-		alert("ENTER");
+	var si = 0;
+	$("#body_panel").on("mouseenter",function(e) {
+		//alert("ENTER");
 		//stopOver = false;
-		//while(!stopOver) {
-		//	setTimeout(function() {window.scroll(0,window.pageYOffset+5);}, 25);
-		//}
-		alert("EXIT");
+		si = setInterval(function() {window.scroll(0,window.pageYOffset+5);}, 25);
+		
+		//alert("EXIT");
 	});
-	$("body").on("mouseleave",function(e) {
-		stopOver = true;
+	$("#body_panel").on("mouseleave",function(e) {
+		clearInterval(si);
 	});
 	
 	function isBagFinal(temp) {
