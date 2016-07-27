@@ -46,7 +46,7 @@
 		#blocco_mail {position:relative;height:25em;top:-7em;background-image:url("images/cartoon_mail.png");background-repeat:no-repeat;background-position:85.7% 630px;}
 		#blocco_bag_front {z-index:3;position:relative;height:45em;top:-49.9em;background-image:url("images/cartoon_bag_front.png");background-repeat:no-repeat;background-position:85.7% 0%;}
 		#blocco_bag_back {padding-left:0%;position:relative;width:100%;height:45em;top:-94.9em;background-image:url("images/cartoon_bag_back.png");background-repeat:no-repeat;background-position:85.7% 0%;}
-		#blocco_mailcap {z-index:3;position:relative;width:100%;height:25em;top:-130em;right:2%;background-image:url("images/cartoon_mailcap.png");background-repeat:no-repeat;background-position:87% 0%;}
+		#blocco_mailcap {z-index:3;position:relative;width:100%;height:26em;top:-130em;right:2%;background-image:url("images/cartoon_mailcap.png");background-repeat:no-repeat;background-position:87% 0%;}
 		#blocco_predator {z-index:3;position:relative;left:-2%;width:100%;height:10em;background-color:rgba(255, 192, 203, 0.97);background-image:url("images/cartoon_cougar.png");
 			background-repeat:no-repeat;background-size:40% 80%;background-position:30% 50%;}
 /* MOBILE */
@@ -73,6 +73,7 @@
 		<div id="blocco_subtitle"></div>
 	</section>
 	<section id="section_story" class="no_border">
+		<div id="debug" style="z-index:5;position:fixed;width:20%;heigth:4em;font-size:4em;background-color:rgba(255,255,225,0.5);"></div>
 		<div id="blocco_owl"><span>Ciao, sono un gufo curiosone</span></div>
 		<div id="blocco_01"><span>Ma sono anche un gran finofe,<br>e se vedo un predatore mi nascondo</span>
 			<div id="blocco_predator"></div>
@@ -122,6 +123,9 @@
 			//$("#blocco_hat").css("backgroundPositionY",0);
 	// !!!! OWN FLY !!!!
 			var currentVal = heightOffset+offsetBackground-startHeight;
+			//DEBUG
+			$("#debug").text(currentVal);
+			//DEBUG
 			if(heightOffset >= startHeight && heightOffset < stopHeight) {
 				$("#blocco_owl").css("backgroundPositionY",(heightOffset+offsetBackground-startHeight));
 				console.log("Adesso vale:");
@@ -165,14 +169,14 @@
 				}
 				//MAILMAN: MAIL AND BAG AND CAP
 				var startMailY = 2540;
-				var endMailY = 2880;
+				var endMailY = 2980;
 				var startMailX = 2440;
-				var endMailX = 2980;
+				var endMailX = 3480;
 				var mailX = isMobile ? 78.6 : 85.7;	// %
-				var mailY = isMobile ? 540 : 580;	//px
-				var bagY = isMobile ? 875 : 925;	//px
+				var mailY = isMobile ? 640 : 680;	//px
+				var bagY = isMobile ? 975 : 1025;	//px
 				var mailCapX = isMobile ? 80.9 : 87;	// %
-				var mailCapY = isMobile ? 510 : 550;	//px
+				var mailCapY = isMobile ? 610 : 650;	//px
 				if(currentVal >= startMailY && currentVal < endMailY) {
 					$("#blocco_mail").css("backgroundPositionY",(currentVal-endMailY+mailY)).css("backgroundPositionX",mailX+"%");
 					$("#blocco_bag_front").css("backgroundPositionY",(currentVal-endMailY+bagY));
@@ -219,8 +223,8 @@
 						$("#blocco_mail").css("backgroundPositionX",(120-(120-mailX)*(currentVal-startMailX)/(startMailY-startMailX))+"%");
 						console.log("["+((currentVal-startMailX)/(startMailY-startMailX)*100)+"%]"+(-270+bagY*(currentVal-startMailX)/(startMailY-startMailX))+"|Y MAX:"+(startMailY-endMailY+bagY)+"-CUR"+(currentVal-endMailY+bagY));
 						//$("#blocco_bag_front").css("backgroundPositionY",(-290+bagY*(currentVal-startMailX)/(startMailY-startMailX)));
-						$("#blocco_bag_front").css("backgroundPositionY",(-270+(-70+bagY)*(currentVal-startMailX)/(startMailY-startMailX)));
-						$("#blocco_bag_back").css("backgroundPositionY",(-270+(-70+bagY)*(currentVal-startMailX)/(startMailY-startMailX)));
+						$("#blocco_bag_front").css("backgroundPositionY",(-270+(-170+bagY)*(currentVal-startMailX)/(startMailY-startMailX)));
+						$("#blocco_bag_back").css("backgroundPositionY",(-270+(-170+bagY)*(currentVal-startMailX)/(startMailY-startMailX)));
 						$("#blocco_mailcap").css("backgroundPositionX",(124.5-(124.5-mailCapX)*(currentVal-startMailX)/(startMailY-startMailX))+"%");
 					}
 				}
@@ -241,8 +245,21 @@
 	$("body").keydown(function(e) {
 		//alert(e.which);
 		if(e.which == 65) {
-			window.scroll(0,window.pageYOffset+4);
+			window.scroll(0,window.pageYOffset+5);
 		}
+	});
+	var stopOver = true;
+	var intIN = 0;
+	$("body").on("mouseover",function(e) {
+		alert("ENTER");
+		//stopOver = false;
+		//while(!stopOver) {
+		//	setTimeout(function() {window.scroll(0,window.pageYOffset+5);}, 25);
+		//}
+		alert("EXIT");
+	});
+	$("body").on("mouseleave",function(e) {
+		stopOver = true;
 	});
 	
 	function isBagFinal(temp) {
