@@ -32,7 +32,7 @@
 			#blocco_theend:after{letter-spacing:10px;content:"!!!";}
 		#endwhite_block {background-color:#FFF;background:linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 100%);height:48em;}
 	/* STORY BLOCKS */
-		#blocco_own {position:relative;z-index:2;height:4650px;background-image:url("images/cartoon_owl.png");background-size:215px 210px;background-repeat:no-repeat;background-position:90% 0px;}
+		#blocco_owl {position:relative;z-index:2;height:4650px;background-image:url("images/cartoon_owl.png");background-size:215px 210px;background-repeat:no-repeat;background-position:90% 0px;}
 		#blocco_01 {position:relative;top:-3860px;height:28em;}
 		#blocco_04 {position:relative;top:-3850px;height:30em;}
 		#blocco_05 {position:relative;top:-3830px;height:32.5em;}
@@ -54,7 +54,7 @@
 		[id^="blocco_"] > span {max-width:510px;word-wrap:break-word;}
 		
 		/** IMAGES **/
-		#blocco_own {background-position:85% 0px;}
+		#blocco_owl {background-position:85% 0px;}
 		#blocco_tree {background-position:125% 105%;}
 		#blocco_predator{background-position:12% 50%;background-size:50% 50%;}
 		#blocco_hat{background-position:78.4% 0%;}
@@ -73,7 +73,7 @@
 		<div id="blocco_subtitle"></div>
 	</section>
 	<section id="section_story" class="no_border">
-		<div id="blocco_own"><span>Ciao, sono un gufo curiosone</span></div>
+		<div id="blocco_owl"><span>Ciao, sono un gufo curiosone</span></div>
 		<div id="blocco_01"><span>Ma sono anche un gran finofe,<br>e se vedo un predatore mi nascondo</span>
 			<div id="blocco_predator"></div>
 		</div>
@@ -106,7 +106,7 @@
 		//var heightWindow = window.innerHeight*2;
 		//console.log("Height is "+heightWindow);
 		//$("#miobody").css("height",heightWindow);
-		alert(screen.width + " x " + screen.height);
+		alert(screen.width+" x "+screen.height+"|"+window.devicePixelRatio);
 		isMobile = screen.width < 780 ? true : false;
 		if(isMobile)
 			$(window).scroll(function() {console.log("THIS:\n"+$(this).scrollTop()+"-PAGE_OFFSET:"+window.pageYOffset);scrollStory();});
@@ -123,9 +123,9 @@
 	// !!!! OWN FLY !!!!
 			var currentVal = heightOffset+offsetBackground-startHeight;
 			if(heightOffset >= startHeight && heightOffset < stopHeight) {
-				$("#blocco_own").css("backgroundPositionY",(heightOffset+offsetBackground-startHeight));
+				$("#blocco_owl").css("backgroundPositionY",(heightOffset+offsetBackground-startHeight));
 				console.log("Adesso vale:");
-				console.log($("#blocco_own").css("backgroundPositionY"));
+				console.log($("#blocco_owl").css("backgroundPositionY"));
 				//WIZARD: HAT AND WAND
 				var startHatY = 1742;
 				var endHatY = 2250;
@@ -227,13 +227,13 @@
 			} 
 	// !!!! START FLY	
 			else if(startHeight > heightOffset) {
-				$("#blocco_own").css("backgroundPositionY",0);
+				$("#blocco_owl").css("backgroundPositionY",0);
 			}
 	// !!!! END FLY
-			else if(heightOffset >= startHeight && parseInt($("#blocco_own").css("backgroundPositionY")) < currentVal) {
-				$("#blocco_own").css("backgroundPositionY",stopHeight-startHeight);
+			else if(heightOffset >= startHeight && parseInt($("#blocco_owl").css("backgroundPositionY")) < currentVal) {
+				$("#blocco_owl").css("backgroundPositionY",stopHeight-startHeight);
 				//console.log("now is "+currentVal);
-				//console.log("settato a "+$("#blocco_own").css("backgroundPositionY"));
+				//console.log("settato a "+$("#blocco_owl").css("backgroundPositionY"));
 			
 			} 
 	}
