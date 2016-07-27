@@ -109,6 +109,8 @@
 		//$("#miobody").css("height",heightWindow);
 		alert(screen.width+" x "+screen.height+"|"+window.devicePixelRatio);
 		isMobile = screen.width < 780 ? true : false;
+		var currentVal = parseInt(window.pageYOffset)+offsetBackground-startHeight;
+		alert(window.pageYOffset+window.innerHeight+"|"+$("body").css("height"));
 		if(isMobile)
 			$(window).scroll(function() {console.log("THIS:\n"+$(this).scrollTop()+"-PAGE_OFFSET:"+window.pageYOffset);scrollStory();});
 		else 
@@ -248,14 +250,9 @@
 			window.scroll(0,window.pageYOffset+5);
 		}
 	});
-	var stopOver = true;
 	var si = 0;
 	$("#body_panel").on("mouseenter",function(e) {
-		//alert("ENTER");
-		//stopOver = false;
-		si = setInterval(function() {window.scroll(0,window.pageYOffset+5);}, 25);
-		
-		//alert("EXIT");
+		si = setInterval(autoScroll, 25);
 	});
 	$("#body_panel").on("mouseleave",function(e) {
 		clearInterval(si);
@@ -266,7 +263,16 @@
 	//	console.log("temp is "+temp);
 		return (temp == "cartoon_bag_final_front.png");
 	}
-	
+	function autoScroll() {
+		if(parseInt(window.pageYOffset+window.innerHeight) > parseInt($("body").css("height")+$("body").css("margin"))) {
+			clearInterval(si);
+		
+			alert("!!!!!!");
+			return;
+		}
+		window.scroll(0,window.pageYOffset+5);
+		return;
+	}
 </script>
 </body>
 </html>
