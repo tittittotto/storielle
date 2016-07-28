@@ -14,6 +14,11 @@
 		#blocco_title,#blocco_theend {font-size:50px;position:relative;z-index:1;letter-spacing:40px;text-align:center;text-transform:uppercase;text-shadow:1px 3px 5px #E02AB1;}
 		#body_background {z-index:-1;position:fixed;background-color:#FFF;width:100%;heigth:100%;background-image:url("images/cartoon_body_backgrond.png");background:url("images/cartoon_body_backgrond.png"),linear-gradient(#FFF 0%,#FFF 25%,#BDD 50%,#FFF 75%,#FFF 100%);}
 		#body_panel {width:80%;margin-left:10%;}
+		.scroll{background-attachment:scroll;}
+		.fixed {background-attachment:fixed;}
+		.str_owl {background-attachment:scroll;background-position:90%  0%;}
+		.fly_owl {background-attachment:fixed; background-position:80% 60%;}
+		.end_owl {background-attachment:scroll;background-position:90% 15%;}
 	/* SECTIONS STYLE */
 		#section_story {z-index:-2;width:100%;background-color:pink;
 			/*
@@ -32,13 +37,17 @@
 			#blocco_theend:after{letter-spacing:10px;content:"!!!";}
 		#endwhite_block {background-color:#FFF;background:linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 100%);height:48em;}
 	/* STORY BLOCKS */
-		#blocco_owl {position:relative;z-index:2;height:4650px;background-image:url("images/cartoon_owl.png");background-size:215px 210px;background-repeat:no-repeat;background-position:90% 0px;}
-		#blocco_01 {position:relative;top:-3860px;height:28em;}
-		#blocco_04 {position:relative;top:-3850px;height:30em;}
-		#blocco_05 {position:relative;top:-3830px;height:32.5em;}
+		/**
+		#blocco_owl {background-attachment:fixed;position:relative;z-index:2;height:4650px;background-image:url("images/cartoon_owl.png");background-size:215px 210px;background-repeat:no-repeat;background-position:90% 0px;}
+		**/
+		#blocco_00 {height:28em;}
+		#blocco_owl {background-color:rgba(100,198,198,0.5);position:fixed;z-index:2;height:210px;background-image:url("images/cartoon_owl.png");background-size:215px 210px;background-repeat:no-repeat;background-position:80% 0px;}
+		#blocco_01 {position:relative;height:28em;}
+		#blocco_04 {position:relative;height:30em;}
+		#blocco_05 {position:relative;height:32.5em;}
 			#blocco_05 > span {z-index:2;}
-		#blocco_02 {position:relative;top:-3890px;height:28em;}
-		#blocco_tree {position:relative;top:-3940px;height:22em;background-color:#90EE90;vertical-align:bottom;background:url("images/cartoon_tree.png"), linear-gradient(#FFC0CB,#90EE90 10%,#90EE90 90%,#FFC0CB 100%);background-repeat:no-repeat;background-position:102% 105%;}
+		#blocco_02 {position:relative;height:28em;}
+		#blocco_tree {position:relative;height:22em;background-color:#90EE90;vertical-align:bottom;background:url("images/cartoon_tree.png"), linear-gradient(#FFC0CB,#90EE90 10%,#90EE90 90%,#FFC0CB 100%);background-repeat:no-repeat;background-position:102% 105%;}
 			#blocco_tree > span {padding-top:2em;}
 		/** IMAGES **/
 		#blocco_hat {z-index:3;position:relative;height:25em;top:-4.95em;background-image:url("images/cartoon_hat.png");background-repeat:no-repeat;background-position:85.5% 0%;}
@@ -51,10 +60,10 @@
 			background-repeat:no-repeat;background-size:40% 80%;background-position:30% 50%;}
 /* MOBILE */
 	@media only screen and (max-device-width:780px) {
-		[id^="blocco_"] > span {max-width:510px;word-wrap:break-word;}
+		[id^="blocco_"] > span {max-width:500px;word-wrap:break-word;}
 		
 		/** IMAGES **/
-		#blocco_owl {background-position:85% 0px;background-attachment:fixed;}
+		#blocco_owl {background-position:85% 0px;}
 		#blocco_tree {background-position:125% 105%;}
 		#blocco_predator{background-position:12% 50%;background-size:50% 50%;}
 		#blocco_hat{background-position:78.4% 0%;}
@@ -73,12 +82,13 @@
 		<div id="blocco_subtitle"></div>
 	</section>
 	<section id="section_story" class="no_border">
-		<div id="debug" style="z-index:5;position:fixed;width:20%;heigth:4em;font-size:4em;background-color:rgba(255,255,225,0.5);"></div>
-		<div id="blocco_owl"><span>Ciao, sono un gufo curiosone</span></div>
+		<div id="debug" style="z-index:5;position:fixed;width:15%;top:80%;font-size:4em;background-color:rgba(255,255,225,0.5);"></div>
+		<div id="blocco_owl"></div>
+		<div id="blocco_00"><span>Ciao, sono un gufo curiosone</span></div>
 		<div id="blocco_01"><span>Ma sono anche un gran finofe,<br>e se vedo un predatore mi nascondo</span>
 			<div id="blocco_predator"></div>
 		</div>
-		<div id="blocco_04"><span>Il mio sogno &egrave;...<br><br><br>diventare uno stregone!</span>
+		<div id="blocco_04"><span>Il mio sogno &egrave;...<br><br><br><br>diventare uno stregone!</span>
 			<div id="blocco_hat"></div>
 			<div id="blocco_wand"></div>
 		</div>
@@ -102,19 +112,20 @@
 	var offsetBackground = 0;
 	var startHeight = 883;
 	var isMobile = false;
+	var changeStatus = false;
 	$(document).ready(function(){
 		$("#body_background").css("height",window.innerHeight);
 		//var heightWindow = window.innerHeight*2;
 		//console.log("Height is "+heightWindow);
 		//$("#miobody").css("height",heightWindow);
-		alert(screen.width+" x "+screen.height+"|"+window.devicePixelRatio);
+	//	alert(screen.width+" x "+screen.height+"|"+window.devicePixelRatio);
 		isMobile = screen.width < 780 ? true : false;
 		var currentVal = parseInt(window.pageYOffset)+offsetBackground-startHeight;
-		//alert(window.pageYOffset+window.innerHeight+"|"+$("body").css("height"));
+	//	alert(window.pageYOffset+window.innerHeight+"|"+$("body").css("height"));
 		if(isMobile)
-			$(window).scroll(function() {console.log("THIS:\n"+$(this).scrollTop()+"-PAGE_OFFSET:"+window.pageYOffset);scrollStory();});
+			$(window).scroll(function() {alert("BEFORE...");console.log("THIS:\n"+$(this).scrollTop()+"-PAGE_OFFSET:"+window.pageYOffset);scrollStory();alert("AFTER!!!");});
 		else 
-			window.onscroll = function() {scrollStory()};
+			window.onscroll = scrollStory;
 	});
 		//window.onscroll = function() {
 	function scrollStory() {
@@ -129,9 +140,21 @@
 			$("#debug").text(currentVal);
 			//DEBUG
 			if(heightOffset >= startHeight && heightOffset < stopHeight) {
-				$("#blocco_owl").css("backgroundPositionY",(heightOffset+offsetBackground-startHeight));
+				//FOR MOBILE: $("#blocco_owl").css("backgroundPositionY",(heightOffset+offsetBackground-startHeight)).
+				//$("#blocco_owl").css("backgroundPositionY",410)
+				//if(changeStatus) {
+					setOwlClass("fly_owl");
+				//	changeStatus = false;
+				//}
+				if($("#blocco_owl").hasClass("end_owl") || $("#blocco_owl").hasClass("srt_owl")) {
+					$("#blocco_owl").removeClass("end_owl").removeClass("srt_owl");
+				}
+				if(!$("#blocco_owl").hasClass("fly_owl")) {
+					$("#blocco_owl").addClass("fly_owl");
+				}
+
 				console.log("Adesso vale:");
-				console.log($("#blocco_owl").css("backgroundPositionY"));
+				console.log($("#blocco_owl").css("backgroundPositionY")+"-"+(heightOffset+offsetBackground-startHeight));
 				//WIZARD: HAT AND WAND
 				var startHatY = 1742;
 				var endHatY = 2250;
@@ -230,17 +253,19 @@
 						$("#blocco_mailcap").css("backgroundPositionX",(124.5-(124.5-mailCapX)*(currentVal-startMailX)/(startMailY-startMailX))+"%");
 					}
 				}
+				if(isMobile){alert("ora sono qui");}
 			} 
 	// !!!! START FLY	
 			else if(startHeight > heightOffset) {
-				$("#blocco_owl").css("backgroundPositionY",0);
+				setOwlClass("srt_owl");
+				//$("#blocco_owl").css("backgroundPositionY",-startHeight);
 			}
 	// !!!! END FLY
 			else if(heightOffset >= startHeight && parseInt($("#blocco_owl").css("backgroundPositionY")) < currentVal) {
-				$("#blocco_owl").css("backgroundPositionY",stopHeight-startHeight);
+				//$("#blocco_owl").css("backgroundPositionY",stopHeight-startHeight).css("backgroundPositionX","90%").css("background-attachment","scroll");
 				//console.log("now is "+currentVal);
 				//console.log("settato a "+$("#blocco_owl").css("backgroundPositionY"));
-			
+				setOwlClass("end_owl");
 			} 
 	}
 	
@@ -252,7 +277,7 @@
 	});
 	var si = 0;
 	$("#body_panel").on("mouseenter",function(e) {
-		si = setInterval(autoScroll, 25);
+		//si = setInterval(autoScroll, 1000/15);
 	});
 	$("#body_panel").on("mouseleave",function(e) {
 		clearInterval(si);
@@ -272,6 +297,21 @@
 		}
 		window.scroll(0,window.pageYOffset+5);
 		return;
+	}
+	
+	function setOwlClass(status) {
+		
+		if(!$("#blocco_owl").hasClass(status)) {
+			$("#blocco_owl").addClass(status);
+		}
+		
+		var allState= ["srt_owl","fly_owl","end_owl"];
+		
+		for(var i = 0; i < allState.length;i++) {
+			if($("#blocco_owl").hasClass(allState[i]) && status != allState[i]) {
+				$("#blocco_owl").removeClass(allState[i]);
+			}
+		}
 	}
 </script>
 </body>
