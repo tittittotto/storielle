@@ -123,7 +123,10 @@
 		var currentVal = parseInt(window.pageYOffset)+offsetBackground-startHeight;
 	//	alert(window.pageYOffset+window.innerHeight+"|"+$("body").css("height"));
 		if(isMobile)
-			$(window).scroll(function() {alert("BEFORE...");console.log("THIS:\n"+$(this).scrollTop()+"-PAGE_OFFSET:"+window.pageYOffset);scrollStory();alert("AFTER!!!");});
+			$(window).scroll(function() {
+				//alert("BEFORE...");console.log("THIS:\n"+$(this).scrollTop()+"-PAGE_OFFSET:"+window.pageYOffset);
+				scrollStory();
+				//alert("AFTER!!!");});
 		else 
 			window.onscroll = scrollStory;
 	});
